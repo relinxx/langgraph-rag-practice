@@ -53,6 +53,11 @@ class Text_Extractor:
 
         all_doc_splits = docx_splits + csv_splits+pdf_splits+xlsx_splits
 
+        return all_doc_splits
+
+
+
+
         #     docx_splits = []
         # for doc in loaded_docx:
         #     docx_splits.extend(text_splitter.split_documents(doc))
