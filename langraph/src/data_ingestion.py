@@ -1,5 +1,6 @@
 import config 
 import os 
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.document_loaders import Docx2txtLoader
 from langchain_community.document_loaders import CSVLoader
@@ -40,7 +41,24 @@ class Text_Extractor:
             loader = CSVLoader(file_path)
             loaded_csv.extend(loader.load())
 
-        
+        text_splitter = RecursiveCharacterTextSplitter(CHUNK_SIZE, CHUNK_OVERLAP, add_start_index=True)
+
+        pdf_splits = []
+        for pdf in loaded_pdfs:
+            pdf_splits.extend(text_splitter.split_documents(pdf))
+
+        csv_splits = []
+        for csv in loaded_csv:
+            csv_splits.extend(text_splitter.split_documents(csv))
+            
+        xlsx_splits = []
+        for xl in loaded_xlsx:
+            xlsx_splits.extend(text_splitter.split_documents(xl))
+            
+        docx_splits = []
+        for doc in loaded_docx:
+            docx_splits.extend(text_splitter.split_documents(doc))
+            
 
 
         # docs = []

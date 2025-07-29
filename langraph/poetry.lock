@@ -1618,6 +1618,23 @@ together = ["langchain-together"]
 xai = ["langchain-xai"]
 
 [[package]]
+name = "langchain-chroma"
+version = "0.2.5"
+description = "An integration package connecting Chroma and LangChain."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "langchain_chroma-0.2.5-py3-none-any.whl", hash = "sha256:dcb80330cd8ac9a87695a5ba237a15affeb805751bdb42dee213b12e0d379825"},
+    {file = "langchain_chroma-0.2.5.tar.gz", hash = "sha256:b63e9df8c3fbb316313c232214b7bc8b696a505039a6f7adf29b992a74cc4b2e"},
+]
+
+[package.dependencies]
+chromadb = ">=1.0.9"
+langchain-core = ">=0.3.70"
+numpy = {version = ">=1.26.0", markers = "python_version < \"3.13\""}
+
+[[package]]
 name = "langchain-community"
 version = "0.3.27"
 description = "Community contributed LangChain integrations."
@@ -5869,4 +5886,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "=3.12.11"
-content-hash = "21508c4b0fced299864c8df2a3689b9aaadaf1292a482c9d444954738941ce20"
+content-hash = "eebcba036d46e6f1e6a72d714612077c10717cad15c6bce6026db586cb90d988"
