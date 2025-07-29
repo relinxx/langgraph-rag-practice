@@ -23,42 +23,55 @@ class Text_Extractor:
 
         loaded_pdfs = []
         for file_path in pdf_files:
-            loader = PyPDFLoader(file_path)
+            loader = PyPDFLoader(os.path.join(directory, file_path))
             loaded_pdfs.extend(loader.load())
 
         loaded_docx = []
         for file_path in docx_files:
-            loader = Docx2txtLoader(file_path)
+            loader = Docx2txtLoader(os.path.join(directory, file_path))
             loaded_docx.extend(loader.load())
 
         loaded_xlsx = []
         for file_path in xlsx_files:
-            loader = UnstructuredXMLLoader(file_path)
+            loader = UnstructuredXMLLoader(os.path.join(directory, file_path))
             loaded_xlsx.extend(loader.load())
 
         loaded_csv = []
         for file_path in csv_files:
-            loader = CSVLoader(file_path)
+            loader = CSVLoader(os.path.join(directory, file_path))
             loaded_csv.extend(loader.load())
 
         text_splitter = RecursiveCharacterTextSplitter(CHUNK_SIZE, CHUNK_OVERLAP, add_start_index=True)
 
-        pdf_splits = []
-        for pdf in loaded_pdfs:
-            pdf_splits.extend(text_splitter.split_documents(pdf))
+        pdf_splits = text_splitter.split_documents(loaded_pdfs)
 
-        csv_splits = []
-        for csv in loaded_csv:
-            csv_splits.extend(text_splitter.split_documents(csv))
+        csv_splits = text_splitter.split_documents(loaded_csv)
             
-        xlsx_splits = []
-        for xl in loaded_xlsx:
-            xlsx_splits.extend(text_splitter.split_documents(xl))
+        xlsx_splits = text_splitter.split_documents(loaded_xlsx)
             
-        docx_splits = []
-        for doc in loaded_docx:
-            docx_splits.extend(text_splitter.split_documents(doc))
+        docx_splits = text_splitter.split_documents(loaded_docx)
+
+        all_doc_splits = docx_splits + csv_splits+pdf_splits+xlsx_splits
+
+        #     docx_splits = []
+        # for doc in loaded_docx:
+        #     docx_splits.extend(text_splitter.split_documents(doc))
             
+        
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
 
 
         # docs = []
