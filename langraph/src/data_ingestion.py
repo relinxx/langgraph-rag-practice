@@ -10,15 +10,37 @@ from transformers import AutoTokenizer
 from langchain.text_splitter import CharacterTextSplitter
 
 class Text_Extractor:
-
     
+    def doc_processor():
 
-    
-    def get_file_extension(file_path):
-        return os.path.splitext(file_path)[1].lower()
-    
-    def doc_processor(file_path, self):
+        directory = "/home/relinxx/Documents/langgraph_integrated_rag_wm/langraph/src/data/"
 
+        pdf_files = [f for f in os.listdir(directory) if f.endswith('.pdf')]
+        docx_files = [f for f in os.listdir(directory) if f.endswith('.docx')]
+        xlsx_files = [f for f in os.listdir(directory) if f.endswith('.xlsx')]
+        csv_files = [f for f in os.listdir(directory) if f.endswith('.csv')]
+
+        loaded_pdfs = []
+        for file_path in pdf_files:
+            loader = PyPDFLoader(file_path)
+            loaded_pdfs.extend(loader.load())
+
+        loaded_docx = []
+        for file_path in docx_files:
+            loader = Docx2txtLoader(file_path)
+            loaded_docx.extend(loader.load())
+
+        loaded_xlsx = []
+        for file_path in xlsx_files:
+            loader = UnstructuredXMLLoader(file_path)
+            loaded_xlsx.extend(loader.load())
+
+        loaded_csv = []
+        for file_path in csv_files:
+            loader = CSVLoader(file_path)
+            loaded_csv.extend(loader.load())
+
+        
 
 
         # docs = []
