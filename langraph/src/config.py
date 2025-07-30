@@ -6,5 +6,4 @@ CHUNK_OVERLAP = 64
 
 
 #llama3 8b tokenizer
-TOKENIZER = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B")
-
+TOKENIZER = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3-8B", use_auth_token=True)

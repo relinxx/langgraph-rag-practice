@@ -1,5 +1,5 @@
 from langchain_community.llms import Ollama
-from langchain import PromptTemplate, LLMChain
+from langchain.prompts import PromptTemplate
 
 
 
@@ -16,6 +16,6 @@ def generate_response(context, query):
 
     template = PromptTemplate(template=prompt, input_variables=["query","context"])
 
-    chain = LLMChain(llm=llm, template=template)
-    response = chain.run({"query": query, "context": context})
-    return response
+    response = template.format(query=query, context=context)
+    answer = llm.invoke(response)
+    return answer

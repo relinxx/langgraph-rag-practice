@@ -12,6 +12,7 @@ from langchain.text_splitter import CharacterTextSplitter
 
 class Text_Extractor:
     
+    @staticmethod
     def doc_processor():
 
         directory = "/home/relinxx/Documents/langgraph_integrated_rag_wm/langraph/src/data/"
@@ -51,8 +52,9 @@ class Text_Extractor:
             
         docx_splits = text_splitter.split_documents(loaded_docx)
 
-        all_doc_splits = docx_splits + csv_splits+pdf_splits+xlsx_splits
-
+        all_doc_splits = docx_splits + csv_splits + pdf_splits + xlsx_splits
+        
+        Text_Extractor.all_docs = all_doc_splits
         return all_doc_splits
 
 

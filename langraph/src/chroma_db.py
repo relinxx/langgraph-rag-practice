@@ -12,5 +12,5 @@ vector_store = Chroma(
 
 all_docs = Text_Extractor.doc_processor()
 
-document_ids = vector_store.add_documents(Text_Extractor.all_docs)
+document_ids = vector_store.add_documents(all_docs)
 print(document_ids[:2])
