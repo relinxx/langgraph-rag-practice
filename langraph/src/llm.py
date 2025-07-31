@@ -4,7 +4,7 @@ from langchain.prompts import PromptTemplate
 
 
 def generate_response(context, query):
-    llm = Ollama(model = "llama3")
+    llm = Ollama(model = "llama3.2:1b")
 
     prompt = """ YOU ARE A PROFESSIONAL AGENT WHO ANSWERS THE QUERIES BASED ON THE PROVIDED CHUNKS OF INFORMATION
 

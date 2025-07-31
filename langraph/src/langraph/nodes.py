@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from llm import generate_response
 from chroma_db import vector_store
 from langgraph.graph import START, StateGraph
-from project_flow import State
+from .project_flow import State
 
 
 

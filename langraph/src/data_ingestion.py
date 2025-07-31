@@ -42,7 +42,11 @@ class Text_Extractor:
             loader = CSVLoader(os.path.join(directory, file_path))
             loaded_csv.extend(loader.load())
 
-        text_splitter = RecursiveCharacterTextSplitter(CHUNK_SIZE, CHUNK_OVERLAP, add_start_index=True)
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=CHUNK_SIZE, 
+            chunk_overlap=CHUNK_OVERLAP, 
+            add_start_index=True
+        )
 
         pdf_splits = text_splitter.split_documents(loaded_pdfs)
 
